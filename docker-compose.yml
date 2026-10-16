@@ -1,0 +1,13 @@
+# Headscale: свой координатор mesh-сети (черновик, сверить с актуальной документацией).
+# Порты роутера не открываем: устройства выходят наружу сами и строят P2P-туннели WireGuard.
+services:
+  headscale:
+    image: headscale/headscale:latest
+    container_name: headscale
+    restart: unless-stopped
+    command: serve
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./data:/var/lib/headscale
+      - ./config.yaml:/etc/headscale/config.yaml:ro

@@ -1,0 +1,20 @@
+# Headscale: минимальная конфигурация для старта (черновик, сверить с актуальной документацией)
+server_url: http://100.64.0.1:8080
+listen_addr: 0.0.0.0:8080
+noise:
+  private_key_path: /var/lib/headscale/noise_private.key
+prefixes:
+  v4: 100.64.0.0/10
+  v6: fd7a:115c:a1e0::/48
+derp:
+  server:
+    enabled: false
+  urls:
+    - https://controlplane.tailscale.com/derpmap/default
+  auto_update_enabled: true
+  update_frequency: 24h
+db_type: sqlite
+db_path: /var/lib/headscale/db.sqlite
+log:
+  format: text
+  level: info
